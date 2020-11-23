@@ -24,4 +24,4 @@ router.post('/login', (req:Request, res:Response) => {
 	res.send(`${email}, ${password}`);
 });
 
-export { router };
+export { router }; 
