@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { get, controller } from "./decorators";
+import { NextFunction, Request, Response } from "express";
+import { get, controller, bodyValidator, post } from "./decorators";
 
 @controller("/auth")
 class LoginControllers {
@@ -19,4 +19,21 @@ class LoginControllers {
         </form>
       `);
   }
+
+  @post('/login')
+  @bodyValidator('email', 'password')
+  postLogin(req: Request, res: Response) {
+    const { email, password } = req.body;
+  
+    if (email && password && email === "hi" && password === "ppp") {
+      req.session = {
+        loggedIn: true,
+      };
+      res.redirect("/");
+    } else {
+      res.send(`<div>Denied</div>`);
+    }
+  }
 }
+
+

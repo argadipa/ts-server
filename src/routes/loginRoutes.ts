@@ -36,18 +36,7 @@ router.get('/', (req:Request, res:Response) => {
 
 
 
-router.post("/login", (req: RequestWithBody, res: Response) => {
-  const { email, password } = req.body;
 
-  if (email && password && email === "hi" && password === "ppp") {
-    req.session = {
-      loggedIn: true,
-		};
-    res.redirect("/");
-  } else {
-    res.send(`<div>Denied</div>`);
-  }
-});
 
 router.get('/logout', (req: Request, res: Response) => {
 	req.session = {

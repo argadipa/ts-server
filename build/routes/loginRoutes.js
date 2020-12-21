@@ -20,18 +20,6 @@ router.get('/', function (req, res) {
         res.send("\n\t\t\t<div>\n\t\t\t\t<div>You are logged out</div>\n\t\t\t\t<a href='/login'>Log in?</a>\n\t\t\t</div>\n\t\t");
     }
 });
-router.post("/login", function (req, res) {
-    var _a = req.body, email = _a.email, password = _a.password;
-    if (email && password && email === "hi" && password === "ppp") {
-        req.session = {
-            loggedIn: true,
-        };
-        res.redirect("/");
-    }
-    else {
-        res.send("<div>Denied</div>");
-    }
-});
 router.get('/logout', function (req, res) {
     req.session = {
         loggedIn: false
