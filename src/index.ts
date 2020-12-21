@@ -6,7 +6,7 @@ import express, { Request, Response } from 'express';
 import { router } from './routes/loginRoutes';
 import bodyPaser from 'body-parser';
 import cookieSession from 'cookie-session'; 
-import { router as controllerRouter } from './controllers/decorators/controller';
+import { AppRouter } from './AppRouter';
 
 import './controllers/LoginControllers';
 
@@ -17,7 +17,7 @@ const app = express();
 app.use(bodyPaser.urlencoded({ extended: true }));
 app.use(cookieSession({ keys: ['myrandomsessionkey'] }));
 app.use(router);
-app.use(controllerRouter);
+app.use(AppRouter.getInstance());
 
 
 app.listen(3000, () => {
