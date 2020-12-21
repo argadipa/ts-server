@@ -34,6 +34,12 @@ class LoginControllers {
       res.send(`<div>Denied</div>`);
     }
   }
+
+  @get('/logout')
+  getLogout(req: Request, res: Response){
+    req.session = undefined;
+    res.redirect('/');
+  };
 }
 
 

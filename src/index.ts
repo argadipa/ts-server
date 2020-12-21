@@ -3,12 +3,12 @@
  */
 
 import express, { Request, Response } from 'express';
-import { router } from './routes/loginRoutes';
 import bodyPaser from 'body-parser';
 import cookieSession from 'cookie-session'; 
 import { AppRouter } from './AppRouter';
 
 import './controllers/LoginControllers';
+import './controllers/RootController';
 
 const app = express();
 
@@ -16,7 +16,6 @@ const app = express();
 // Order is important!
 app.use(bodyPaser.urlencoded({ extended: true }));
 app.use(cookieSession({ keys: ['myrandomsessionkey'] }));
-app.use(router);
 app.use(AppRouter.getInstance());
 
 
